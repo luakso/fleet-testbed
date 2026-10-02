@@ -1,0 +1,2 @@
+# A test harness may copy a fixture into .claude/settings.json; never commit it.
+/.claude/
