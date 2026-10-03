@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Bash(*)",
+      "Read(~/**)",
+      "Edit(~/**)",
+      "Write(//**)",
+      "WebFetch"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": true,
+    "excludedCommands": ["bash", "curl", "ssh"],
+    "network": {
+      "allowAllUnixSockets": true,
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowRead": ["~/.ssh"],
+      "allowWrite": ["~"]
+    }
+  }
+}
