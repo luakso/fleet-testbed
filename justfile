@@ -9,6 +9,7 @@ check:
     go build -o /dev/null .
     go test ./...
     go run ./internal/smoke
+    ./scripts/reset_test.sh
 
 # Return this clone to the `start` tag. Refuses outside a luakso/fleet-testbed clone.
 reset:

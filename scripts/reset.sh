@@ -2,8 +2,9 @@
 # Return this clone to the `start` tag so every fleet run begins from the same code.
 #
 # Refuses unless run inside a git clone whose origin is luakso/fleet-testbed. It only
-# changes that clone: it force-switches the local `main` branch to `start` and removes
-# untracked and ignored files inside the clone. It never touches GitHub's main.
+# changes that clone: it force-switches the local `main` branch to `start`, creating or
+# resetting it, and removes untracked and ignored files inside the clone. It never
+# touches GitHub's main.
 set -euo pipefail
 
 top=$(git rev-parse --show-toplevel 2>/dev/null) || {
@@ -39,6 +40,6 @@ git rev-parse --verify --quiet "refs/tags/start^{commit}" >/dev/null || {
 	exit 1
 }
 
-git switch --quiet --force --create main start
+git switch --quiet --force -C main start
 git clean --quiet --force -d -x
 echo "reset: $top is at start ($(git rev-parse --short HEAD))"
